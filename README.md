@@ -1,2 +1,2 @@
 # CourseLookUp
-Extract georgia tech course information 
+Extract data from coursesat.tech API 

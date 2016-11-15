@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="myApp.js"></script>
+<link rel="stylesheet" href="calendar.css">
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" class="wrap">
+    <div class="rightSplit">
+        <div>
+            Select course department:
+            <div>
+                <select ng-model="dropDownCourses" ng-options="x for x in myCourseArr">
+                    <option value="" disabled selected>Select Course Departement</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div>
+            Select course number:
+            <div>
+                <select ng-model="dropDownClassNum" ng-options="x for x in myCourseNumArr">
+                    <option value="" disabled selected>Select Course Number</option>
+                </select>
+            </div>
+
+        </div>
+        <div>
+            <h1>{{dropDownCourses}} {{dropDownClassNum}}</h1>
+            <!--<h1 class="box">{{courseAtTechLink}}</h1>-->
+            <table id="courseDataTable"></table>
+        </div>
+        <div ng-app="myApp" id="createButton">
+            <button onclick="myFunction()">Create Buttons</button>
+        </div>
+        <div>
+            <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="buzzImage.jpg" alt="Smiley" width="32" height="32">
+        </div>
+    </div>
+
+    <div class="leftSplit">
+        <ul class="weekdays">
+            <li>Time</li>
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+            <li>8:00 a.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>9:00 a.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>10:00 a.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>11:00 a.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>12:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>1:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>2:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>3:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>4:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>5:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>6:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>7:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>8:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>9:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>10:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>11:00 p.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>12:00 a.m.</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+            <li>empty</li>
+        </ul>
+
+        <!--<ul class="columnTime">-->
+            <!--<li>-->
+                <!--12:00 a.m.-->
+                <!--<ul class="rowClass">-->
+
+                <!--</ul>-->
+            <!--</li>-->
+            <!--<li>1:00 a.m.</li>-->
+            <!--<li>2:00 a.m.</li>-->
+            <!--<li>3:00 a.m.</li>-->
+            <!--<li>4:00 a.m.</li>-->
+            <!--<li>5:00 a.m.</li>-->
+            <!--<li>6:00 a.m.</li>-->
+            <!--<li>7:00 a.m.</li>-->
+            <!--<li>8:00 a.m.</li>-->
+            <!--<li>9:00 a.m.</li>-->
+            <!--<li>10:00 a.m.</li>-->
+            <!--<li>11:00 a.m.</li>-->
+            <!--<li>12:00 p.m.</li>-->
+            <!--<li>1:00 p.m.</li>-->
+            <!--<li>2:00 p.m.</li>-->
+            <!--<li>3:00 p.m.</li>-->
+            <!--<li>4:00 p.m.</li>-->
+            <!--<li>5:00 p.m.</li>-->
+            <!--<li>6:00 p.m.</li>-->
+            <!--<li>7:00 p.m.</li>-->
+            <!--<li>8:00 p.m.</li>-->
+            <!--<li>9:00 p.m.</li>-->
+            <!--<li>10:00 p.m.</li>-->
+            <!--<li>11:00 p.m.</li>-->
+        <!--</ul>-->
+
+        <!--<ul class="rowClass">-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+            <!--<li>1</li>-->
+            <!--<li>2</li>-->
+            <!--<li>3</li>-->
+
+        <!--</ul>-->
+    </div>
+
+</div>
+
+</body>
+</html>
